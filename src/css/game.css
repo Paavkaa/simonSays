@@ -22,11 +22,11 @@
 }
 
 #red:hover, #red.flash {
-    background-color: var(--red-500);
+    background-color: var(--red-400);
 }
 
 #red:active {
-    background-color: var(--red-400);
+    background-color: var(--red-300);
 }
 
 #blue {
@@ -34,12 +34,12 @@
 }
 
 #blue:hover, #blue.flash {
-    background-color: var(--blue-500);
+    background-color: var(--blue-400);
 }
 
 
 #blue:active {
-    background-color: var(--blue-400);
+    background-color: var(--blue-300);
 }
 
 
@@ -48,11 +48,11 @@
 }
 
 #yellow:hover, #yellow.flash {
-    background-color: var(--yellow-300);
+    background-color: var(--yellow-200);
 }
 
 #yellow:active {
-    background-color: var(--yellow-200);
+    background-color: var(--yellow-100);
 }
 
 #green {
@@ -60,10 +60,34 @@
 }
 
 #green:hover, #green.flash {
-    background-color: var(--green-600);
-}
-
-#green:active {
     background-color: var(--green-500);
 }
 
+#green:active {
+    background-color: var(--green-400);
+}
+
+.start-button {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+    z-index: 3;
+
+    width: 30vw;
+    height: 15vh;
+
+    justify-content: center;
+    font-size: 3.052rem;
+}
+
+.start-button-background {
+    position: absolute;
+
+    height: 100vh;
+    width: 100%;
+
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 2;
+}
