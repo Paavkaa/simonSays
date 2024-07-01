@@ -1,8 +1,14 @@
 .menu-button {
+    all: unset;
+    cursor: pointer;
+
     height: 3rem;
     width: auto;
 
-    margin: 1rem;
+    margin: 2rem 1rem;
+
+    position: absolute;
+    z-index: 100;
 }
 
 .menu-button svg {
