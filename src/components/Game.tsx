@@ -7,6 +7,8 @@ export default function Game() {
     const [playerSequence, setPlayerSequence] = useState<string[]>([]);
     const [isPlayingSequence, setIsPlayingSequence] = useState(false);
     const [isGameStarted, setIsGameStarted] = useState(false);
+    const [finalScore, setFinalScore] = useState<number>(0);
+    const [hasGameBeenPlayed, setHasGameBeenPlayed] = useState<boolean>(false);
 
     useEffect(() => {
         if (isGameStarted && sequence.length > 0) {
@@ -24,9 +26,9 @@ export default function Game() {
     const startGame = () => {
         setPlayerSequence([]);
         setIsGameStarted(true);
+        setFinalScore(0);
+        setHasGameBeenPlayed(true);
         generateSequence();
-        document.querySelector('.start-button')?.remove();
-        document.querySelector('.start-button-background')?.remove();
     };
 
     const playSequence = () => {
@@ -67,7 +69,7 @@ export default function Game() {
         setPlayerSequence(newPlayerSequence);
 
         if (!checkSequence(newPlayerSequence)) {
-            alert('Game over');
+            setFinalScore(sequence.length - 1);
             setSequence([]);
             setPlayerSequence([]);
             setIsGameStarted(false);
@@ -85,8 +87,17 @@ export default function Game() {
     return (
         <>
             <h6 className="round-counter">Round: {roundCounter}</h6>
-            <Button className="start-button" onClick={startGame} disabled={isPlayingSequence}>Start</Button>
-            <div className="start-button-background" />
+
+            {!isGameStarted && (
+                <>
+                    <div className="start-dialog">
+                        {hasGameBeenPlayed && <h6 className="final-score">Final Score: {finalScore}</h6>}
+                        <Button className="start-button" onClick={startGame} disabled={isPlayingSequence}>Start</Button>
+                    </div>
+                    <div className="start-button-background"/>
+                </>
+            )}
+
             <div className="game-grid">
                 <Button onClick={() => roundMove("red")} id="red" className="grid-button" />
                 <Button onClick={() => roundMove("blue")} id="blue" className="grid-button" />

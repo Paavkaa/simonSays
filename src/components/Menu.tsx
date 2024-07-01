@@ -1,6 +1,6 @@
 import {Sidebar} from "primereact/sidebar";
 import {useState} from "react";
-import {FiGithub, FiHome} from "react-icons/fi";
+import {FiGithub, FiMenu} from "react-icons/fi";
 import '../css/menu.css';
 
 export default function Menu() {
@@ -9,7 +9,7 @@ export default function Menu() {
     return (
         <>
             <button className="menu-button" onClick={() => setVisible(true)}>
-                <FiHome />
+                <FiMenu />
             </button>
 
             <Sidebar visible={visible}  onHide={() => setVisible(false)}>
