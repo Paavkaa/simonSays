@@ -47,14 +47,37 @@ export default function Game() {
         }
     };
 
+    const addToPlayerSequence = (color: string) => {
+        const newPlayerSequence = [...playerSequence, color];
+        setPlayerSequence(newPlayerSequence);
+
+        if (!checkSequence(newPlayerSequence)) {
+            alert('Game over');
+        } else if (newPlayerSequence.length === sequence.length) {
+            alert('Congratulations! You completed the sequence.');
+        }
+    };
+
+    const checkSequence = (newPlayerSequence: string[]) => {
+        for (let i = 0; i < newPlayerSequence.length; i++) {
+            if (newPlayerSequence[i] !== sequence[i]) {
+                return false;
+            }
+        }
+        return true;
+    };
+
+    console.log(sequence);
+    console.log(playerSequence);
+
     return (
         <>
             <Button onClick={playSequence} disabled={isPlayingSequence}>Play sequence</Button>
             <div className="game-grid">
-                <Button id="red" className="grid-button" />
-                <Button id="blue" className="grid-button" />
-                <Button id="yellow" className="grid-button" />
-                <Button id="green" className="grid-button" />
+                <Button onClick={() => addToPlayerSequence("red")} id="red" className="grid-button" />
+                <Button onClick={() => addToPlayerSequence("blue")} id="blue" className="grid-button" />
+                <Button onClick={() => addToPlayerSequence("yellow")} id="yellow" className="grid-button" />
+                <Button onClick={() => addToPlayerSequence("green")} id="green" className="grid-button" />
             </div>
         </>
     );
