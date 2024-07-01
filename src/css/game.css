@@ -1,9 +1,7 @@
-/* src/components/Game.css */
-
 .game-grid {
     display: grid;
-    grid-template-columns: repeat(2, 20vw);
-    grid-template-rows: repeat(2, 20vw);
+    grid-template-columns: repeat(2, 30vh);
+    grid-template-rows: repeat(2, 30vh);
     gap: 10px;
     justify-content: center;
     align-items: center;
@@ -11,8 +9,9 @@
 }
 
 .grid-button {
-    width: 20vw;
-    height: 20vw;
+    width: 30vh;
+    height: 30vh;
+
     border: none;
     cursor: pointer;
 }
