@@ -2,7 +2,11 @@ import '../css/game.css';
 import { Button } from 'primereact/button';
 import { useState, useEffect } from 'react';
 
-export default function Game() {
+interface GameProps {
+    addGameResult: (score: number) => void;
+}
+
+export default function Game({ addGameResult }: GameProps) {
     const [sequence, setSequence] = useState<string[]>([]);
     const [playerSequence, setPlayerSequence] = useState<string[]>([]);
     const [isPlayingSequence, setIsPlayingSequence] = useState(false);
@@ -70,6 +74,7 @@ export default function Game() {
 
         if (!checkSequence(newPlayerSequence)) {
             setFinalScore(sequence.length - 1);
+            addGameResult(sequence.length - 1);
             setSequence([]);
             setPlayerSequence([]);
             setIsGameStarted(false);
