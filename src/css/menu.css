@@ -15,3 +15,22 @@
     height: 100%;
     width: auto;
 }
+
+.p-datatable .p-datatable-thead > tr > th > div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.p-datatable .p-datatable-tbody > tr > td {
+    text-align: center;
+}
+
+.p-sidebar-content {
+    display: flex;
+    flex-direction: column;
+}
+
+.about {
+    margin-top: auto;
+}

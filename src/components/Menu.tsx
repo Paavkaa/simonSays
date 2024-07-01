@@ -16,13 +16,27 @@ export default function Menu({gameResults}: { gameResults: { position: number, s
 
             <Sidebar visible={visible}  onHide={() => setVisible(false)}>
                 <h4>Simon says</h4>
-                <h5>Leaderboard</h5>
-                <DataTable value={gameResults} tableStyle={{ minWidth: '50rem' }}>
-                    <Column field="position" header="Position"></Column>
-                    <Column field="score" header="Score"></Column>
+                <h5>Score board</h5>
+
+                <DataTable
+                    value={gameResults}
+                    removableSort={true}
+                    scrollable={true}
+                    scrollHeight="100%"
+                    style={{height: "50%"}}
+                >
+                    <Column
+                        field="position"
+                        header="Position"
+                    />
+                    <Column
+                        field="score"
+                        header="Score"
+                        sortable={true}
+                    />
                 </DataTable>
 
-                <h5>About</h5>
+                <h5 className="about">About</h5>
 
                 <a href="">
                     <FiGithub />

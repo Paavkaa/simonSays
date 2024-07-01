@@ -106,3 +106,29 @@
     background-color: rgba(0, 0, 0, 0.5);
     z-index: 2;
 }
+
+@media (max-width: 768px) {
+    .game-grid {
+        grid-template-columns: repeat(2, 40vw);
+        grid-template-rows: repeat(2, 40vw);
+    }
+
+    .grid-button {
+        width: 40vw;
+        height: 40vw;
+    }
+
+    .start-dialog {
+        width: 100%;
+    }
+
+    .start-dialog h6 {
+        width: 80vw;
+    }
+
+    .start-button {
+        width: 80vw;
+        height: 20vh;
+        font-size: 2.5rem;
+    }
+}
