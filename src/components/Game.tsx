@@ -1,6 +1,6 @@
 import '../css/game.css';
 import { Button } from 'primereact/button';
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 
 interface GameProps {
     addGameResult: (score: number) => void;
@@ -13,12 +13,19 @@ export default function Game({ addGameResult }: GameProps) {
     const [isGameStarted, setIsGameStarted] = useState(false);
     const [finalScore, setFinalScore] = useState<number>(0);
     const [hasGameBeenPlayed, setHasGameBeenPlayed] = useState<boolean>(false);
+    const intervalRef = useRef<number | null>(null); // Ref to store interval ID
 
     useEffect(() => {
         if (isGameStarted && sequence.length > 0) {
             playSequence();
         }
     }, [sequence]);
+
+    useEffect(() => {
+        if (!isGameStarted) {
+            setHasGameBeenPlayed(false);
+        }
+    }, []);
 
     const generateSequence = () => {
         const colors = ['red', 'blue', 'yellow', 'green'];
@@ -38,12 +45,12 @@ export default function Game({ addGameResult }: GameProps) {
     const playSequence = () => {
         setIsPlayingSequence(true);
         let i = 0;
-        const interval = setInterval(() => {
+        intervalRef.current = window.setInterval(() => {
             const color = sequence[i];
             flashButton(color);
             i++;
             if (i >= sequence.length) {
-                clearInterval(interval);
+                clearInterval(intervalRef.current!);
                 setIsPlayingSequence(false);
             }
         }, 1000);
@@ -78,6 +85,10 @@ export default function Game({ addGameResult }: GameProps) {
             setSequence([]);
             setPlayerSequence([]);
             setIsGameStarted(false);
+            if (intervalRef.current) {
+                clearInterval(intervalRef.current);
+                setIsPlayingSequence(false);
+            }
             return;
         }
 
@@ -99,7 +110,7 @@ export default function Game({ addGameResult }: GameProps) {
                         {hasGameBeenPlayed && <h6 className="final-score">Final Score: {finalScore}</h6>}
                         <Button className="start-button" onClick={startGame} disabled={isPlayingSequence}>Start</Button>
                     </div>
-                    <div className="start-button-background"/>
+                    <div className="start-button-background" />
                 </>
             )}
 

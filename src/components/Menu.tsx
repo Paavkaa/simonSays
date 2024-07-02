@@ -37,8 +37,11 @@ export default function Menu({gameResults}: { gameResults: { position: number, s
                 </DataTable>
 
                 <h5 className="about">About</h5>
+                <p>
+                    Small game project to practice React and TypeScript. The game is a simple Simon says game where the player has to remember the sequence of colors and tries to get high score.
+                </p>
 
-                <a href="">
+                <a href="https://github.com/Paavkaa">
                     <FiGithub />
                 </a>
                 <p>Created by Pavka</p>
